@@ -19,13 +19,22 @@
 
       <a-assets>
         <a-asset-item     id="glassesModel"
-        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses/scene.gltf" ><a-assets-item>
+        src="./Assets/pink_round_sunglasses.glb" ><a-assets-item>
+          <a-asset-item     id="mask"
+          src="./Assets/face_mask.glb" ><a-assets-item>
       </a-assets>
-        <a-entity mindar-face-target="anchorIndex: 168">
+        <a-entity mindar-face-target="anchorIndex: 5">
           <a-gltf-model     rotation="0 0 0"
-          position="0 0 0"
-          scale="0.0085 0.0085 0.0085"
+          position="0 0 -0.25"
+          scale="0.9 0.9 0.9"
           src="#glassesModel"></a-gltf-model>
+
+
+            <a-entity mindar-face-target="anchorIndex: 5">
+              <a-gltf-model     rotation="0 0 0"
+              position="0 0 10"
+              scale="3 3 3"
+              src="#mask"></a-gltf-model>
 
       </a-entity>
     </a-scene>
