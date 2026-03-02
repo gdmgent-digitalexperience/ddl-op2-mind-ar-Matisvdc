@@ -1,47 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=`, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://aframe.io/releases/1.7.1/aframe.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
-    <script src="https://libs.zappar.com/zappar-aframe/2.0.0/zappar-aframe.js"></script>
-
-
-
-    <link rel="stylesheet" href="./css/main.css">    
-</head>
-<body>
-    <a-scene 
-        mindar-image="imageTargetSrc:./assets/targets.mind; maxTrack:10; missTolerance: 10" 
-        color-space="sRGB" 
-        renderer="colorManagement: true, physicallyCorrectLights"
-        device-orientation-permission-ui="enabled: false"
-        vr-mode-ui="enabled: false"
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene
+      mindar-face
+      embedded
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
     >
+      <a-camera active="false" position="0 0 0"></a-camera>
 
+      <a-assets>
+        <a-asset-item     id="glassesModel"
+        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses/scene.gltf" ><a-assets-item>
+      </a-assets>
+        <a-entity mindar-face-target="anchorIndex: 168">
+          <a-gltf-model     rotation="0 0 0"
+          position="0 0 0"
+          scale="0.0085 0.0085 0.0085"
+          src="#glassesModel"></a-gltf-model>
 
-        </a-assets>
-        <!-- Ask user for camera permissions, display some text if permission is denied -->
-        <a-entity zappar-permissions-ui id="permissions"></a-entity>
-        <!-- shows a full-page dialog that informs the user they're using an unsupported browser -->
-        <a-entity zappar-compatibility-ui id="compatibility"></a-entity>
-
-        <a-camera zappar-camera="user-facing: true;" />
-
-        <!-- Setup our instant tracker and start it in placement mode so the user can -->
-        <!-- choose a location for the object -->
-        <a-entity zappar-face id="face-anchor">
-
-            <!-- Include a 3D model inside our instant tracker -->
-            <a-entity>
-                <a-box position="0 0 1" color="blue" opacity="1"></a-box>
-            </a-entity>
-
-        </a-entity>
-
+      </a-entity>
     </a-scene>
-
-</body>
+  </body>
 </html>
